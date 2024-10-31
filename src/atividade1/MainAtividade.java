@@ -9,6 +9,9 @@ public class MainAtividade {
         System.out.println(carrin.getCor() + "\n\n\n\n");
 
         carrin.apresentarCarro();
+
+        Carro car = new Carro("Hayabusa", "Preto", 2023);
+        car.apresentarCarro();
     }
 
 }

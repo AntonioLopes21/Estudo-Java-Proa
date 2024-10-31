@@ -45,7 +45,7 @@ public class Carro {
 //métodos
     public void apresentarCarro() {
         System.out.println("Apresentando o carro:");
-        System.out.println("Carro de Modelo: " + this.modelo + " \nCarro de cor: " + this.cor + " \ncarro do ano: " + this.ano);
+        System.out.println("Carro de Modelo: " + this.modelo + " \nCarro de cor: " + this.cor + " \ncarro do ano: " + this.ano  + "\n\n\n\n");
 
     }
 
