@@ -1,6 +1,6 @@
 package atividade1;
 
-public class Mainha {
+public class MainAtividade {
     public static void main(String[] args) {
 
         Carro carrin = new Carro("Miata", "branco", 1990);
