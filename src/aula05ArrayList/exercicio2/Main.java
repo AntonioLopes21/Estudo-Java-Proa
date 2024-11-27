@@ -12,10 +12,9 @@ public class Main {
 
         cursoProgramacao.exibirInformacoes();
 
-        cursoProgramacao.removerAluno("PAuLiN dA zo");
+        cursoProgramacao.removerAluno("Paulin da ZO");
         cursoProgramacao.exibirInformacoes();
 
-        cursoProgramacao.quantidadeAlunos();
 
 
     }

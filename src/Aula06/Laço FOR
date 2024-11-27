@@ -1,0 +1,3 @@
+for(contador; condição; iteração {
+    sout(o que vai ser exibido)
+}

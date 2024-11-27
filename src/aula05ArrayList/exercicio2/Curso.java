@@ -58,6 +58,7 @@ public class Curso {
         System.out.println("Nome:" + getNome());
         System.out.println("Preço:" + getPreco());
         System.out.println("Grade curricular:"+ disciplinaLista +"\n"+"Lista de alunos:" + alunoLista);
+        System.out.println("Quantidade de alunos:" + quantidadeAlunos() + "\n\n\n");
     }
 
     public void adicionarDisciplina(String novaDisciplina) {
@@ -65,21 +66,30 @@ public class Curso {
     }
 
     public void adicionarAluno(String novoAluno) {
-        alunoLista.add(novoAluno);
+        alunoLista.add(novoAluno.toLowerCase());
     }
 
     public void removerAluno(String alunoDeletado) {
 
         if(alunoLista.contains(alunoDeletado)) {
             alunoLista.remove(alunoDeletado.toLowerCase());
-            System.out.println("O aluno foi removido com sucesso");
+            System.out.println("O aluno foi removido com sucesso"+"\n\n");
         } else {
             System.out.println("O aluno não existe na lista");
         }
     }
 
-    public void quantidadeAlunos () {
-        System.out.println("Número de alunos matriculados: " +alunoLista.size());
+    public int quantidadeAlunos () {
+        //for(alunos : )
+        //System.out.println("Número de alunos matriculados: " +alunoLista.size());
+        int contador = 1;
+
+        for (String alunos: alunoLista) {
+            System.out.println("Aluno Nº"+contador+ ": " +alunos);
+            contador ++;
+        }
+
+        return alunoLista.size();
     }
 
  }

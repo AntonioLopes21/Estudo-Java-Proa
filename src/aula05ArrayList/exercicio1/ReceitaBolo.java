@@ -58,7 +58,14 @@ public class ReceitaBolo {
     //
     public void exibir_detalhes() {
         System.out.println(this.nome);
-        System.out.println("Ingredientes:\n" + ingredientes);
+
+        int contador = 0;
+
+        System.out.println("Ingredientes:");
+        for(String ingrediente: ingredientes) {
+            contador +=1;
+            System.out.println("Ingrediente Nº"+ contador + ":" + ingrediente);
+        }
     }
     //
     public void adicionar_ingredientes(String produto) {
