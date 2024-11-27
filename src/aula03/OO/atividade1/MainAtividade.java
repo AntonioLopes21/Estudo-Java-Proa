@@ -1,4 +1,4 @@
-package atividade1;
+package aula03.OO.atividade1;
 
 public class MainAtividade {
     public static void main(String[] args) {

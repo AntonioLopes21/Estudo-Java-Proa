@@ -7,7 +7,7 @@ class AlugarLivro {
     List<String> listaLivros = new ArrayList<>();
 
     Livro iracema = new Livro("Iracema", "Machado de Assis", "23/10/24", true);
-
+    //iracema.emprestarLivro();
 }
 
 public class Livro {
@@ -60,7 +60,7 @@ public class Livro {
     }
 
     //métodos
-    public void emprestarLivro() {
+    public void emprestarLivro(Livro livro) {
         if(isDisponivel) {
             isDisponivel = false;
             System.out.println("O livro: " + titulo + " foi emprestado com sucesso!");
@@ -69,7 +69,7 @@ public class Livro {
         }
     }
 
-    public void devolverLivro() {
+    public void devolverLivro(Livro livro) {
         isDisponivel = true;
         System.out.println("O livro: " + getTitulo() + " foi devolvido com sucesso");
     }
