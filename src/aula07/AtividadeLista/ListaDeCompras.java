@@ -94,9 +94,9 @@ public class ListaDeCompras {
                     System.out.println("Opção inválida. Escolha um número de 1 a 4");
                 break;
             }
-            scan.close();
 
         }
+        scan.close();
     }
 
 }
