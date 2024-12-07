@@ -9,8 +9,19 @@ public class Tarefa {
 
     //construtores
     public Tarefa(){
-
+        this.id = contadorId++;
+        this.status = "pendente";
+        this.descricao = null;
     }
+
+    public Tarefa(String titulo) {
+        this.id = contadorId++;
+        this.titulo = titulo;
+        this.status = "pendente";
+        this.descricao = null;
+    }
+
+
 
     public Tarefa(String titulo, String descricao) {
         this.id = contadorId++;
