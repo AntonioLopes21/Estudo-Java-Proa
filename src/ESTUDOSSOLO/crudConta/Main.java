@@ -1,4 +1,4 @@
-package estudoSolo.crudConta;
+package ESTUDOSSOLO.crudConta;
 
 import java.util.Scanner;
 

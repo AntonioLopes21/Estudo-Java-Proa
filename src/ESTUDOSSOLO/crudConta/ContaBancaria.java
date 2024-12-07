@@ -1,4 +1,4 @@
-package estudoSolo.crudConta;
+package ESTUDOSSOLO.crudConta;
 
 public class ContaBancaria {
 
