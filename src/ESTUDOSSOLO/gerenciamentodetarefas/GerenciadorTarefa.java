@@ -5,30 +5,39 @@ import java.util.*;
 public class GerenciadorTarefa {
     Scanner scan = new Scanner(System.in);
     List<Tarefa> tarefas = new ArrayList<>();
+
     //introduzindo dicionário através de tutorial
     //Map<String, String> dict = new HashMap<>();
 
 
-    public void adicionarTarefa(Tarefa tarefa) {
+    public void adicionarTarefa() {
+
         System.out.println("Digite o nome da tarefa:");
-        tarefa = new Tarefa();
+        String tituloTarefa = scan.nextLine();
 
-        tarefas.add(tarefa);
+        System.out.println("Agora digite a descrição da tarefa:");
+        String descricaoTarefa = scan.nextLine();
+
+        Tarefa novaTarefa = new Tarefa(tituloTarefa, descricaoTarefa);
+
+
         System.out.println("Tarefa adicionada com sucesso!");
-        System.out.println("ID da tarefa:"+ tarefa.getID());
+        tarefas.add(novaTarefa);
 
+        novaTarefa.descricaoTarefa();
     }
 
     public void listarTarefa() {
-
         if(tarefas.isEmpty()) {
-            System.out.println("A lista de tarefas está vazia!");
+            System.out.println("A lista de tarefas está vazia no momento...");
         } else {
             int contadorTarefa = 1;
-            for (Tarefa t : tarefas) {
-                System.out.println("Tarefa Nº:" + (contadorTarefa ++) + " " + t);
+            for(Tarefa t : tarefas) {
+                System.out.println("_____________________________________");
+                System.out.println("Tarefa Nº:"+ (contadorTarefa));
                 t.descricaoTarefa();
-                System.out.println("----------------------");
+                System.out.println("_____________________________________");
+                contadorTarefa ++;
             }
         }
     }
@@ -111,7 +120,6 @@ public class GerenciadorTarefa {
 
     //MÉTODO PARA EXIBIR MENU
     public void exibirMenu() {
-        Tarefa tarefa = new Tarefa();
         boolean quebradorDeFluxo = true;
 
 
@@ -124,41 +132,43 @@ public class GerenciadorTarefa {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Adicionando tarefa:");
+                    System.out.println("\n\n\nAdicionando tarefa:");
                     System.out.println("Digite o nome do título da tarefa");
                     String tituloTarefa = scan.nextLine();
                     //criando duas instâncias
-                    GerenciadorTarefa tarefinha = new GerenciadorTarefa();
-                    Tarefa novaTarefa = new Tarefa(tituloTarefa);
-                    tarefinha.adicionarTarefa(novaTarefa);
+                    adicionarTarefa();
                 break;
 
                 case 2:
-                    System.out.println("Removendo tarefa:");
+                    System.out.println("\n\n\nRemovendo tarefa:");
                     System.out.println("Digite o id da tarefa:");
                     int id = scan.nextInt();
+                    //quebra a linha evitando que o scan capture mais do que devia
+                    scan.nextLine();
                     removerTarefa(id);
                 break;
 
                 case 3:
-                    System.out.println("Lista de tarefas:");
+                    System.out.println("\n\n\nLista de tarefas:");
                     listarTarefa();
                 break;
 
                 case 4:
-                    System.out.println("Digite o id da tarefa que você deseja buscar:");
+                    System.out.println("\n\n\nDigite o id da tarefa que você deseja buscar:");
                     int idd = scan.nextInt();
+                    scan.nextLine();
                     listarTarefaPorId(idd);
                 break;
 
                 case 5:
-                    System.out.println("Editar tarefa: Digite o id da tarefa que você deseja editar:");
+                    System.out.println("\n\n\nEditar tarefa: Digite o id da tarefa que você deseja editar:");
                     int iddd = scan.nextInt();
+                    scan.nextLine();
                     editarTarefa(iddd);
                 break;
 
                 case 6:
-                    System.out.println("Saindo...");
+                    System.out.println("\n\n\nSaindo...");
                     quebradorDeFluxo = false;
                 break;
 
