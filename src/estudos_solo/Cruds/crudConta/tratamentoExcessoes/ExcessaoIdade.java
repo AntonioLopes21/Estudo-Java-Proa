@@ -1,4 +1,4 @@
-package ESTUDOSSOLO.crudConta.tratamentoExcessoes;
+package estudos_solo.Cruds.crudConta.tratamentoExcessoes;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

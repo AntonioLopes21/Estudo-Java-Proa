@@ -1,4 +1,4 @@
-package ESTUDOSSOLO;
+package estudos_solo;
 
 import java.util.ArrayList;
 import java.util.List;

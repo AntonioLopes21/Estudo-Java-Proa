@@ -1,4 +1,4 @@
-package ESTUDOSSOLO.gerenciamentodetarefas;
+package estudos_solo.gerenciamentodetarefas;
 
 public class Tarefa {
     private static int contadorId = 1;

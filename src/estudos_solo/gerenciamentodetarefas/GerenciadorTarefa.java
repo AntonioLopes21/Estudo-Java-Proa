@@ -1,4 +1,4 @@
-package ESTUDOSSOLO.gerenciamentodetarefas;
+package estudos_solo.gerenciamentodetarefas;
 
 import java.util.*;
 
