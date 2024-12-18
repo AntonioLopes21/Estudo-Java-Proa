@@ -1,43 +1,42 @@
 package estudos_solo.Cruds.crudConta.Crud_estacionamento;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
         Scanner dadoColetado = new Scanner(System.in);
-        boolean resposta = true;
+        int opcao;
 
         do{
             System.out.println("Bem vindo ao estacionamento");
             System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
-            int opcao = dadoColetado.nextInt();
+            opcao = dadoColetado.nextInt();
             dadoColetado.nextLine();
 
+            RegistroVeiculo teste = new RegistroVeiculo();
 
             switch(opcao) {
 
                 case 1:
-                    //criando o objeto Carro para manipulação
-                    Carro novoCarro = new Carro();
-
-                    System.out.println("Adicionando veículo...");
-
-                    System.out.println("Digite o nome do veículo...");
-                    String nomeVeiculo = dadoColetado.nextLine();
-                    novoCarro.setNome(nomeVeiculo);
-
-                    System.out.println("Digite o ano de fabricação...");
-                    int anoFabr = dadoColetado.nextInt();
-                    dadoColetado.nextLine();
-                    novoCarro.setAnoFabricacao(anoFabr);
-                    break;
+                    teste.RegistrarVeiculo();
+                break;
 
                 case 2:
-                    System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+                    System.out.println("Digite o id do veículo estacionado");
+                    String idVeiculo = dadoColetado.nextLine();
+
+                    try {
+                        UUID idCarro = UUID.fromString(idVeiculo); // Converte a String para UUID
+                        teste.removerVeiculo(idCarro); // Chama o método corretamente
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("ID inválido. Certifique-se de inserir um UUID válido.");
+                    }
                 break;
 
                 case 3:
-                    System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+                    System.out.println("Lista de veículos:");
+                    teste.listarVeiculo();
                 break;
 
                 case 4:
@@ -54,7 +53,7 @@ public class Main {
             }
 
 
-        } while (resposta != true);
+        } while (opcao != 5);
 
     }
 }

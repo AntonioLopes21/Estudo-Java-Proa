@@ -1,5 +1,7 @@
 package estudos_solo.Cruds.crudConta.Crud_estacionamento;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -8,6 +10,8 @@ public class Carro {
     private String nome;
     private int anoFabricacao;
     private UUID id;
+    private String placa;
+
 
     public Carro() {
         this.id = UUID.randomUUID(); // Gera um ID único automaticamente
@@ -41,5 +45,13 @@ public class Carro {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 }
