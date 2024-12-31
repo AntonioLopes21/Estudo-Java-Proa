@@ -25,7 +25,7 @@ public class RegistroVeiculo {
 
         do {
             System.out.println("Digite o nome do veículo...");
-            String nomeVeiculo = dadoColetado.nextLine();
+            String nomeVeiculo = dadoColetado.nextLine().toUpperCase();
             novoCarro.setNome(nomeVeiculo);
 
             if(nomeVeiculo.isEmpty()) {
@@ -54,7 +54,8 @@ public class RegistroVeiculo {
 
         do {
             System.out.println("Digite a placa do veículo: 3 letras e 4 números:");
-            String plaquinha = dadoColetado.nextLine();
+            String plaquinha = dadoColetado.nextLine().toUpperCase();
+
             novoCarro.setPlaca(plaquinha);
             placaVazia = false;
             System.out.println("placa inserida");

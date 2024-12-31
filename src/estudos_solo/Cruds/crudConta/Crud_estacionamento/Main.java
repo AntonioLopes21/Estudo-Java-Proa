@@ -30,6 +30,9 @@ public class Main {
                     System.out.println("Ticket registrado com sucesso.");
                     ticket.exibirTicketECarro();
                     ticketCadastrado.put(veiculo, ticket);
+                    System.out.println("\n\n\n");
+                    System.out.println("ticket: " + ticketCadastrado.values());
+                    System.out.println("\n\n\n");
                 break;
 
                 case 2:

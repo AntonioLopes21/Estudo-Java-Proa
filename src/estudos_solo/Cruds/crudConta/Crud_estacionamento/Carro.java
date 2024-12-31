@@ -18,7 +18,7 @@ public class Carro {
         this.nome = nome;
         this.anoFabricacao = anoFabricacao;
         this.id = UUID.randomUUID(); // Gera um UUID único
-        this.parteConvertidaUUID = id.getMostSignificantBits(); // Converte e armazena a parte significativa
+        this.parteConvertidaUUID = Math.abs(id.getMostSignificantBits()); // Converte e armazena a parte significativa
     }
 
     public String getNome() {
