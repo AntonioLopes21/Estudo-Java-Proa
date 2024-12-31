@@ -7,53 +7,60 @@ public class Main {
     public static void main(String[] args) {
         Scanner dadoColetado = new Scanner(System.in);
         int opcao;
+        RegistroVeiculo teste = new RegistroVeiculo();
 
         do{
             System.out.println("Bem vindo ao estacionamento");
-            System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+            System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Buscar por id\n6. Sair");
             opcao = dadoColetado.nextInt();
             dadoColetado.nextLine();
 
-            RegistroVeiculo teste = new RegistroVeiculo();
 
             switch(opcao) {
 
                 case 1:
+                    System.out.println("\n\n\n");
                     teste.RegistrarVeiculo();
                 break;
 
                 case 2:
-                    System.out.println("Digite o id do veículo estacionado");
-                    String idVeiculo = dadoColetado.nextLine();
-
-                    try {
-                        UUID idCarro = UUID.fromString(idVeiculo); // Converte a String para UUID
-                        teste.removerVeiculo(idCarro); // Chama o método corretamente
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("ID inválido. Certifique-se de inserir um UUID válido.");
-                    }
-                break;
+                    System.out.println("\n\n\n");
+                    System.out.println("Digite o id do veículo:");
+                    long idVerificacao = dadoColetado.nextLong();
+                    teste.removerVeiculo(idVerificacao);
+                    break;
 
                 case 3:
-                    System.out.println("Lista de veículos:");
+                    System.out.println("\n\n\nLista de veículos:");
                     teste.listarVeiculo();
                 break;
 
                 case 4:
-                    System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+                    System.out.println("\n\n\n");
+                    System.out.println("Digite o id do veículo:");
+                    long idCarro = dadoColetado.nextLong();
+                    teste.editarVeiculo(idCarro);
                 break;
 
                 case 5:
-                    System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+                    System.out.println("\n\n\n");
+                    System.out.println("Busca por id:");
+                    System.out.println("Digite o id do veiculo:");
+                    long idVeiculo = dadoColetado.nextLong();
+                    teste.buscarPorId(idVeiculo);
+                    break;
+
+                case 6:
+                    System.out.println("Obrigado pela preferência e volte sempre!");
                 break;
 
                 default:
-                    System.out.println("O que você deseja fazer?\n1. Adicionar veículo\n2. remover veículo\n3.listar veículos\n4. Editar veículos\n5. Sair");
+                    System.out.println("Opção inválida, digite um número de 1 a 5");
                 break;
             }
 
 
-        } while (opcao != 5);
-
+        } while (opcao != 6);
+        System.out.println("Fim do programa.");
     }
 }

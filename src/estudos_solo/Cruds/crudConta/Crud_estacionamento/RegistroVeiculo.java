@@ -16,38 +16,61 @@ public class RegistroVeiculo {
     public void RegistrarVeiculo() {
         //criando o objeto Carro para manipulação
         Carro novoCarro = new Carro();
+        boolean placaVazia = true;
+        boolean nomeVazio = true;
+        boolean anoVazio = true;
 
         System.out.println("Adicionando veículo...");
 
-        System.out.println("Digite o nome do veículo...");
-        String nomeVeiculo = dadoColetado.nextLine();
-        novoCarro.setNome(nomeVeiculo);
+        do {
+            System.out.println("Digite o nome do veículo...");
+            String nomeVeiculo = dadoColetado.nextLine();
+            novoCarro.setNome(nomeVeiculo);
+            nomeVazio = false;
+            System.out.println("nome inserido");
+        } while (nomeVazio == true);
 
-        System.out.println("Digite o ano de fabricação...");
-        int anoFabr = dadoColetado.nextInt();
-        dadoColetado.nextLine();
-        novoCarro.setAnoFabricacao(anoFabr);
+        do {
+            System.out.println("Digite o ano de fabricação...");
+            int anoFabr = dadoColetado.nextInt();
+            dadoColetado.nextLine();
+            novoCarro.setAnoFabricacao(anoFabr);
+
+            if(novoCarro.getAnoFabricacao() < 1990 || novoCarro.getAnoFabricacao() > 2025) {
+                System.out.println("o ano é inválido, digite um ano entre 1990 e 2025");
+            } else {
+                placaVazia = false;
+                System.out.println("ano inserido");
+            }
+
+        } while(placaVazia == true);
+
+
+        do {
+            System.out.println("Digite a placa do veículo: 3 letras e 4 números:");
+            String plaquinha = dadoColetado.nextLine();
+            novoCarro.setPlaca(plaquinha);
+            placaVazia = false;
+            System.out.println("placa inserida");
+        } while(placaVazia == true);
+
 
         carros.add(novoCarro);
 
         System.out.println("Carro adicionado com sucesso!");
     }
 
-    public void removerVeiculo(UUID id) {
-        Carro carroParaRemover = null;
+    public void removerVeiculo(long id) {
 
         for(Carro carro : carros) {
-            if(carro.getId().equals(id)) {
-                carroParaRemover = carro;
-                break;
-            }
-        }
 
-        if (carroParaRemover != null) {
-            carros.remove(carroParaRemover);
-            System.out.println("Carro removido com sucesso!");
-        } else {
-            System.out.println("Carro com ID " + id + " não encontrado.");
+            if(carro.getParteConvertidaUUID() == id) {
+                System.out.println("Carro removido com sucesso");
+                carros.remove(carro);
+                break;
+            } else {
+                System.out.println("Veículo não encontrado!");
+            }
         }
 
     }
@@ -63,11 +86,46 @@ public class RegistroVeiculo {
                 contador = 1;
 
                 System.out.println("==================================");
-                System.out.println("Carro Nº:" + contador + " " + veiculo);
+                veiculo.exibirInformacoesCarro();
                 System.out.println("==================================");
                 contador++;
             }
         }
 
+    }
+
+    public void editarVeiculo(long id) {
+        for (Carro carro : carros) {
+            if(carro.getParteConvertidaUUID() == id) {
+                System.out.println("Editando veículo:");
+
+                System.out.println("Digite o novo nome do veículo:");
+                String novoNome = dadoColetado.nextLine();
+                carro.setNome(novoNome);
+
+                System.out.println("Digite a nova placa do veículo:");
+                String novaPlaca = dadoColetado.nextLine();
+                carro.setPlaca(novaPlaca);
+
+                System.out.println("Digite o ano do veículo:");
+                int novoAno = dadoColetado.nextInt(); dadoColetado.nextLine();
+                if(novoAno > 2025 || novoAno < 1990) {
+                    do {
+                        System.out.println("Digite valores entre 1990 e 2025");
+                        novoAno = dadoColetado.nextInt(); dadoColetado.nextLine();
+                    } while (novoAno <1990 || novoAno > 2025);
+                }
+                carro.setAnoFabricacao(novoAno);
+            }
+        }
+    }
+
+    public void buscarPorId(long id) {
+        for (Carro carro : carros) {
+            if(carro.getParteConvertidaUUID() == id) {
+                System.out.println("Carro encontrado!" + "\n");
+                carro.exibirInformacoesCarro();
+            }
+        }
     }
 }

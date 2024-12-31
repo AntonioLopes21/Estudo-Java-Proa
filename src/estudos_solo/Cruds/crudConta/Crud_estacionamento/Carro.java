@@ -1,26 +1,24 @@
 package estudos_solo.Cruds.crudConta.Crud_estacionamento;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
-
 
 public class Carro {
 
+    private long parteConvertidaUUID;
     private String nome;
     private int anoFabricacao;
     private UUID id;
     private String placa;
 
-
     public Carro() {
-        this.id = UUID.randomUUID(); // Gera um ID único automaticamente
+        this.id = UUID.randomUUID();
+        this.parteConvertidaUUID = id.getMostSignificantBits(); // Converte e armazena a parte significativa
     }
 
     public Carro(String nome, int anoFabricacao) {
         this.nome = nome;
         this.anoFabricacao = anoFabricacao;
-        this.id = UUID.randomUUID(); // Gera um ID único automaticamente
+        this.id = UUID.randomUUID(); // Gera um UUID único
+        this.parteConvertidaUUID = id.getMostSignificantBits(); // Converte e armazena a parte significativa
     }
 
     public String getNome() {
@@ -53,5 +51,17 @@ public class Carro {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    public long getParteConvertidaUUID() {
+        return parteConvertidaUUID;
+    }
+
+    public void setParteConvertidaUUID(long parteConvertidaUUID) {
+        this.parteConvertidaUUID = parteConvertidaUUID;
+    }
+
+    public void exibirInformacoesCarro() {
+        System.out.format("Nome do veículo: %s\nano do veículo: %d\nPlaca de Número: %s\n", nome, anoFabricacao, placa + "\nID:" + getParteConvertidaUUID());
     }
 }
