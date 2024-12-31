@@ -10,6 +10,7 @@ public class RegistroVeiculo {
 
     private double taxaDeEstacionamento = 5.0;
     private List<Carro> carros = new ArrayList<>();
+
     Scanner dadoColetado = new Scanner(System.in);
 
 
@@ -26,7 +27,12 @@ public class RegistroVeiculo {
             System.out.println("Digite o nome do veículo...");
             String nomeVeiculo = dadoColetado.nextLine();
             novoCarro.setNome(nomeVeiculo);
-            nomeVazio = false;
+
+            if(nomeVeiculo.isEmpty()) {
+                System.out.println("O veículo precisa de um nome");
+            } else {
+                nomeVazio = false;
+            }
             System.out.println("nome inserido");
         } while (nomeVazio == true);
 

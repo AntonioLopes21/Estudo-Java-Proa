@@ -1,13 +1,19 @@
 package estudos_solo.Cruds.crudConta.Crud_estacionamento;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner dadoColetado = new Scanner(System.in);
         int opcao;
-        RegistroVeiculo teste = new RegistroVeiculo();
+        Scanner dadoColetado = new Scanner(System.in);
+
+        Map<RegistroVeiculo, TicketEstacionamento> ticketCadastrado = new HashMap<>();
+
+        RegistroVeiculo veiculo = new RegistroVeiculo();
+        TicketEstacionamento ticket = new TicketEstacionamento();
 
         do{
             System.out.println("Bem vindo ao estacionamento");
@@ -20,26 +26,32 @@ public class Main {
 
                 case 1:
                     System.out.println("\n\n\n");
-                    teste.RegistrarVeiculo();
+                    veiculo.RegistrarVeiculo();
+                    System.out.println("Ticket registrado com sucesso.");
+                    ticket.exibirTicketECarro();
+                    ticketCadastrado.put(veiculo, ticket);
                 break;
 
                 case 2:
                     System.out.println("\n\n\n");
                     System.out.println("Digite o id do veículo:");
                     long idVerificacao = dadoColetado.nextLong();
-                    teste.removerVeiculo(idVerificacao);
+                    veiculo.removerVeiculo(idVerificacao);
+
+                    ticketCadastrado.remove(veiculo);
+                    ticket.retiradaDeVeiculo();
                     break;
 
                 case 3:
                     System.out.println("\n\n\nLista de veículos:");
-                    teste.listarVeiculo();
+                    veiculo.listarVeiculo();
                 break;
 
                 case 4:
                     System.out.println("\n\n\n");
                     System.out.println("Digite o id do veículo:");
                     long idCarro = dadoColetado.nextLong();
-                    teste.editarVeiculo(idCarro);
+                    veiculo.editarVeiculo(idCarro);
                 break;
 
                 case 5:
@@ -47,7 +59,7 @@ public class Main {
                     System.out.println("Busca por id:");
                     System.out.println("Digite o id do veiculo:");
                     long idVeiculo = dadoColetado.nextLong();
-                    teste.buscarPorId(idVeiculo);
+                    veiculo.buscarPorId(idVeiculo);
                     break;
 
                 case 6:
